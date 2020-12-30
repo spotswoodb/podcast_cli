@@ -28,7 +28,7 @@ Menu #=> Controller (direct the user from one place to another)
     - gets input
     - delegates to menu choice
 
-Adding a message...
+
 
 Requirements:
 
