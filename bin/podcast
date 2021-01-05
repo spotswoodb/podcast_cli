@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'bundler/setup'
-require "podcast"
+require "environment"
+require ''
 
 Podcast::Menu.new.start
