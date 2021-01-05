@@ -1,7 +1,9 @@
 #!/usr/bin/env ruby
 
 require 'bundler/setup'
-require "environment"
-require ''
+require_relative '../lib/environment.rb'
+
+
+API.get_data
 
 Podcast::Menu.new.start

@@ -16,10 +16,7 @@ class Podcast
         @@all
     end
 
-    def self.type
-        @@type
-    end
-
+    
 end
 
     
