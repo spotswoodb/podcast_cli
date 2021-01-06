@@ -8,5 +8,5 @@ gem "rspec"
 gem "pry"
 gem 'unirest'
 gem "json"
-
+gem "dotenv"
 gem "colorize"
