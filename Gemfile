@@ -6,7 +6,6 @@ gemspec
 gem "rake"
 gem "rspec"
 gem "pry"
-gem 'unirest'
-gem "json"
-gem "dotenv"
+gem 'nokogiri'
+gem 'open-uri'
 gem "colorize"

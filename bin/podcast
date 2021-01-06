@@ -4,6 +4,6 @@ require 'bundler/setup'
 require_relative '../lib/environment.rb'
 
 
-API.get_data
+Scraper.get_data
 
 Podcast::Menu.new.start
