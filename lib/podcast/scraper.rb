@@ -12,17 +12,31 @@ class Scraper
       
     # end
 
-    def self.get_data
-        html = open("chartable.com/charts/spotify/united-states-of-america-top-podcasts")
-        binding.pry
-        doc = Nokogiri::HTML(html)
-        container = doc.css('tbody')
+    # def self.get_data
+    #     html = open("chartable.com/charts/spotify/united-states-of-america-top-podcasts")
+    #     binding.pry
+    #     doc = Nokogiri::HTML(html)
+    #     container = doc.css('tbody')
 
-        container.each do |el|
-            binding.pry
+    #     container.each do |el|
+    #         binding.pry
+    #     end 
+
+    #     # div.title.f3
+    # end 
+
+
+        def self.get_data
+            html = URI.open("https://toppodcast.com/top-podcasts/")
+            doc = Nokogiri::HTML(html)
+            container = doc.css('div.allTopPodcasts div.podcastRow')
+            container.each do |el|
+                title = el.css('h3').text.strip
+                description = el.css('div.podcast-short-description').text
+                category = el.css('span.category-box').text
+                Podcast.new(title, description, category)
+            end 
         end 
-
-        # div.title.f3
-    end 
+   
 end
 

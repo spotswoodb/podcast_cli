@@ -1,14 +1,12 @@
 class Podcast
     @@all = []
-    @@type = []
 
-    attr_accessor :language, :genre, :title, :description
+    attr_accessor :title, :description, :category
 
-    def initialize(language, genre, title, description)
-        @language = language
-        @genre = genre
+    def initialize(title, description, category)
         @title = title
         @description = description
+        @category = category
         self.class.all << self
     end
 
@@ -19,5 +17,4 @@ class Podcast
     
 end
 
-    
     
