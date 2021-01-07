@@ -2,7 +2,7 @@ require_relative 'lib/podcast/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "podcast"
-  spec.version       = Podcast::VERSION
+  spec.version       = PodcastCli::VERSION
   spec.authors       = ["Ben Spotswood"]
   spec.email         = ["spotswoodb@gmail.com"]
 

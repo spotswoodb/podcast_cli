@@ -7,7 +7,7 @@ class Scraper
             container.each do |el|
                 title = el.css('h3').text.strip
                 description = el.css('div.podcast-short-description').text
-                category = el.css('span.category-box').text
+                category = Category.new(el.css('span.category-box').text)
                 Podcast.new(title, description, category)
             end 
         end 

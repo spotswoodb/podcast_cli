@@ -14,6 +14,7 @@ class Podcast
         @@all
     end
 
+    #get rid of \n in description
     
 end
 
