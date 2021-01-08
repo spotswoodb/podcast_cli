@@ -64,10 +64,9 @@ class Menu
     end
 
     def title_menu
-        user_input = gets.strip.to_i-1
-        binding.pry
-        if user_input.between?(0,@uniq_array.count-1)
-            display_title(user_input)
+        user_input = gets.strip.to_i
+        if user_input.between?(1,@uniq_array.count)
+            display_title(user_input.to_i-1)
         elsif user_input == 'exit'
             goodbye
         else
@@ -90,54 +89,16 @@ class Menu
         puts " "
         user_input = gets.strip.to_i
         puts " "
-        display_description(user_input)
+        display_description(user_input, podcasts)
     end
 
-    def display_description(number)
-        podcasts = @uniq_array[number-1].podcasts
-        podcasts.each.with_index(1) do |podcast, index|
+    def display_description(number, podcasts)
+        podcast = podcasts[number-1]
         puts "#{podcast.description}"
-        end
         puts " "
         puts "What do you think? Want to see more podcasts? Type 'yes' or 'exit'."
         puts " "
         menu
-    end
-
-    def invalid_category_select
-        puts "Try 'yes' to see the list of categories again and 'exit' to leave."
-        input = gets.strip
-        if input == 'yes'
-            display_category
-        elsif input == 'exit'
-            goodbye
-        else 
-            invalid_category_select
-        end
-    end
-
-    def invalid_title_select
-        puts "Try 'yes' to see the list of titles again and 'exit' to leave."
-        input = gets.strip
-        if input == 'yes'
-            display_title(number)
-        elsif input == 'exit'
-            goodbye
-        else 
-            invalid_title_select
-        end
-    end
-
-    def invalid_description_select
-        puts "Try 'yes' to see the description again and 'exit' to leave."
-        input = gets.strip
-        if input == 'yes'
-            display_description(number)
-        elsif input == 'exit'
-            goodbye
-        else 
-            invalid_description_select
-        end
     end
 
     def goodbye
@@ -151,7 +112,6 @@ class Menu
         puts " "
         puts "Your input doesn't seem valid. Give it another go?"
         puts " "
-        menu
     end
 
 # it's giving all of the podcasts descriptions in the first category regardless of selection - but I want just the one I selected
