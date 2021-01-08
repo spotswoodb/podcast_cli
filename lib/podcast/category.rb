@@ -14,10 +14,9 @@ class Category
 
     def podcasts
         Podcast.all.select do |podcast|
-        podcast.category.name == self
+        podcast.category.name == self.name
         end
     end
-    #get rid of \n in description
     
 end
 
