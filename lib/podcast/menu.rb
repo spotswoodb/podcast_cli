@@ -30,7 +30,7 @@ class Menu
         puts " "
         puts '********************'
         puts " "
-        puts "Input 'y' to see a list of categories, 'exit' to leave the menu."
+        puts "Input 'yes' to see a list of categories, 'exit' to leave the menu."
         puts " "
         menu
     end
@@ -38,13 +38,14 @@ class Menu
     def menu
         selection = user_input
 
-        if selection == 'y'
+        if selection == 'yes'
             display_category
             menu
         elsif selection == 'exit'
             goodbye
         else
             invalid
+            menu
         end
     end
 
@@ -58,14 +59,14 @@ class Menu
         puts "#{index}. #{category.name}"
         end
         puts " "
-        puts "For a list of top podcasts, select a category's number. Or type 'exit' to leave the application."
+        puts "For a list of top podcasts, select a category's number. Or type 'exit' to leave the menu."
         puts " "
         title_menu
     end
 
     def title_menu
-        user_input = gets.strip.to_i
-        if user_input.between?(1,@uniq_array.count)
+        user_input = gets.strip
+        if user_input.to_i.between?(1,@uniq_array.count)
             display_title(user_input.to_i-1)
         elsif user_input == 'exit'
             goodbye
@@ -85,20 +86,41 @@ class Menu
         puts "#{index}. #{podcast.title}"
         end
         puts " "
-        puts "For a description of one of these podcasts, choose a number."
+        puts "For a description of one of these podcasts, choose a number. Or type 'exit' to leave the menu."
         puts " "
         user_input = gets.strip.to_i
         puts " "
-        display_description(user_input, podcasts)
+        if user_input.between?(1,podcasts.count)
+            display_description(user_input, podcasts)
+        elsif user_input == 'exit'
+            goodbye
+        else
+            invalid
+            display_title(number)
+        end
     end
+
 
     def display_description(number, podcasts)
         podcast = podcasts[number-1]
-        puts "#{podcast.description}"
+        puts "#{podcast.description.gsub("Read More", "")}"
+        puts " "
+        more_podcasts
+    end
+
+    def more_podcasts
         puts " "
         puts "What do you think? Want to see more podcasts? Type 'yes' or 'exit'."
         puts " "
-        menu
+        user_input = gets.strip
+        if user_input == 'yes'
+            display_category
+        elsif user_input == 'exit'
+            goodbye
+        else
+            invalid
+            more_podcasts
+        end
     end
 
     def goodbye
@@ -109,9 +131,11 @@ class Menu
     end
 
     def invalid
+        puts '********************'
         puts " "
-        puts "Your input doesn't seem valid. Give it another go?"
+        puts "Your input doesn't seem valid. Let's give it another go!"
         puts " "
+        puts '********************'
     end
 
 # it's giving all of the podcasts descriptions in the first category regardless of selection - but I want just the one I selected

@@ -13,8 +13,6 @@ class Podcast
     def self.all
         @@all
     end
-
-    #get rid of \n in description
     
 end
 
