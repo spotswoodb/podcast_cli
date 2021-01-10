@@ -138,10 +138,4 @@ class Menu
         puts '********************'
     end
 
-# it's giving all of the podcasts descriptions in the first category regardless of selection - but I want just the one I selected
-
-    # what to build when my CLI doesn't understand their input - build out invalid class
-    # build out exit methods
-    # need to make an invalid number not work when typed
-
 end
