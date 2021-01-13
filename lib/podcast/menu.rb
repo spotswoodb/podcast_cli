@@ -40,7 +40,6 @@ class Menu
 
         if selection == 'yes'
             display_category
-            menu
         elsif selection == 'exit'
             goodbye
         else
@@ -53,8 +52,7 @@ class Menu
         puts " "
         puts "Here's a list of categories to choose from:"
         puts " "
-        categories = Category.all
-        @uniq_array = categories.uniq {|obj| obj.name}
+        @uniq_array = Category.all.uniq {|obj| obj.name}
         @uniq_array.each.with_index(1) do |category, index|
         puts "#{index}. #{category.name}"
         end

@@ -4,3 +4,10 @@ require 'bundler/setup'
 require_relative '../lib/environment.rb'
 
 Menu.new.start
+
+
+# types of variables
+# each vs map => return values
+# self
+# category attr in podcast class: why? and what is the value(category object)
+# podcasts method in category class: has many relationship, returns all podcasts belonging to selected category instance
