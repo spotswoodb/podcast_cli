@@ -7,7 +7,7 @@ class Podcast
         @title = title
         @description = description
         @category = category
-        self.class.all << self
+        @@all << self
     end
 
     def self.all
